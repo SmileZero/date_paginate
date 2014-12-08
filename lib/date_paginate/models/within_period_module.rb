@@ -3,8 +3,13 @@ module DatePaginate
     extend ActiveSupport::Concern
 
     included do
-      scope :within_week, ->(column=:created_at, date) { where(column => date.in_time_zone.all_week) }
-      scope :within_month, ->(column=:created_at, date) { where(column => date.in_time_zone.all_month) }
+      def self.within_week(column=:created_at, date)
+        where(column => date.in_time_zone.all_week)
+      end
+
+      def self.within_month(column=:created_at, date)
+        where(column => date.in_time_zone.all_month)
+      end
     end
   end
 end

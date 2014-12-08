@@ -1,7 +1,6 @@
 require 'active_support/inflector'
 require 'action_view'
 require 'action_view/context'
-require 'date_paginate/helpers/tags'
 
 module DatePaginate
   module Helpers

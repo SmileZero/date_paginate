@@ -1,0 +1,16 @@
+.date_paginate a, .date_paginate span.current, .date_paginate span.gap
+  float: left;
+  padding: 0 14px;
+  line-height: 38px;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid #DDD;
+  border-left-width: 0;
+
+.date_paginate
+  border-left: 1px solid #ddd;
+
+.date_paginate > span.page
+  padding: 0;
+  float: none;
+  border: none;
