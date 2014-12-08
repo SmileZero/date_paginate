@@ -1,0 +1,10 @@
+<div>
+  <nav class="date_paginate months">
+    <% recent_months(num_pages).each do |m| %>
+      <% m = m.in_time_zone if date.is_a? ActiveSupport::TimeWithZone %>
+      <span class="page<%=' current' if (date.between? m, m.end_of_month) %>">
+        <%= link_to_unless (date.between? m, m.end_of_month), m.strftime('%Y-%m'), :year => m.year, :month => m.month %>
+      </span>
+    <% end %>
+  </nav>
+</div>
