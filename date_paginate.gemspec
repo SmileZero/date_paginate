@@ -7,9 +7,9 @@ require "date_paginate/version"
 Gem::Specification.new do |s|
   s.name        = "date_paginate"
   s.version     = DatePaginate::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
+  s.authors     = ["SmileZero"]
+  s.email       = ["chen_0_1987@163.com"]
+  s.homepage    = "https://github.com/SmileZero/date_paginate"
   s.summary     = "TODO: Summary of DatePaginate."
   s.description = "TODO: Description of DatePaginate."
   s.license     = "MIT"
@@ -19,5 +19,13 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.1.6"
 
-  s.add_development_dependency "sqlite3"
+  s.add_dependency 'activesupport', ['>= 3.0.0']
+  s.add_dependency 'actionpack', ['>= 3.0.0']
+
+  s.add_development_dependency 'bundler', ['>= 1.0.0']
+  s.add_development_dependency 'rake', ['>= 0']
+  s.add_development_dependency 'rspec', ['>= 0']
+  s.add_development_dependency 'capybara', ['>= 1.0']
+  s.add_development_dependency 'database_cleaner', ['~> 1.2.0']
+  s.add_development_dependency 'rdoc', ['>= 0']
 end
