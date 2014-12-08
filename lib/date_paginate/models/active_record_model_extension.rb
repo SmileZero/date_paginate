@@ -1,5 +1,3 @@
-require 'date_paginate/models/within_period_module'
-
 module DatePaginate
   module ActiveRecordModelExtension
     extend ActiveSupport::Concern
