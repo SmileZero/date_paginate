@@ -1,5 +1,5 @@
 module DatePaginate
-  module ApplicationHelper
+  module ApplicationControllerExtension
     def set_date(with_day: true)
       params[:day] = 1 unless with_day
 

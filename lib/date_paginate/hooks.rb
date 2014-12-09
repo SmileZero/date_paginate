@@ -9,6 +9,10 @@ module DatePaginate
       ActiveSupport.on_load(:action_view) do
         ::ActionView::Base.send :include, DatePaginate::ActionViewExtension
       end
+
+      ActiveSupport.on_load(:action_controller) do
+        ::ActionController::Base.send :include, DatePaginate::ApplicationControllerExtension
+      end
     end
   end
 end
