@@ -6,7 +6,7 @@ module DatePaginate
     included do
       # Future subclasses will pick up the model extension
       class << self
-        def inherited_with_date_paginate(kls) #:nodoc:
+        def inherited_with_date_paginate(kls)
           inherited_without_date_paginate kls
           kls.send(:include, DatePaginate::ActiveRecordModelExtension) if kls.superclass == ::ActiveRecord::Base
         end

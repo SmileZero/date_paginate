@@ -17,8 +17,6 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.0"
-
   s.add_dependency 'activesupport', ['>= 3.0.0']
   s.add_dependency 'actionpack', ['>= 3.0.0']
 
@@ -27,5 +25,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec', ['>= 0']
   s.add_development_dependency 'capybara', ['>= 1.0']
   s.add_development_dependency 'database_cleaner', ['~> 1.2.0']
-  s.add_development_dependency 'rdoc', ['>= 0']
 end
