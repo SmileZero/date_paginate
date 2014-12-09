@@ -1,7 +1,7 @@
 module DatePaginate
   module ApplicationHelper
     def set_date(with_day: true)
-      params["day"] = 1 unless with_day
+      params[:day] = 1 unless with_day
 
       date = if params[:year] && params[:month] && params[:day]
         begin
