@@ -9,17 +9,10 @@ module DatePaginate
 
       def initialize(template, options)
         options[:num_pages] ||= DatePaginate.config.default_num_pages
+        options[:date_paginate_type] ||= DatePaginate.config.default_paginate_type
         @template, @options = template, options
 
-        @date_paginate_type = @options[:date_paginate_type] if @options[:date_paginate_type].in? date_paginate_type_list
-        @date_paginate_type ||= DatePaginate.config.default_paginate_type
-
-        @param_name = @options.delete(:param_name)
-        @params = @options[:params] ? template.params.merge(@options.delete :params) : template.params
-      end
-
-      def date_paginate_type_list
-        [:days, :weeks, :months]
+        @date_paginate_type = @options.delete(:date_paginate_type)
       end
 
       def partial_path
