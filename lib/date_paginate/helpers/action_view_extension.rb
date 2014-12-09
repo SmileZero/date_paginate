@@ -6,12 +6,16 @@ module DatePaginate
       paginator.to_s
     end
 
-    def date_paginate_months(options = {})
-      date_paginate(options.merge(date_paginate_type: :months))
+    def date_paginate_days(options = {})
+      date_paginate(options.merge(date_paginate_type: :days))
     end
 
     def date_paginate_weeks(options = {})
       date_paginate(options.merge(date_paginate_type: :weeks))
+    end
+
+    def date_paginate_months(options = {})
+      date_paginate(options.merge(date_paginate_type: :months))
     end
   end
 end

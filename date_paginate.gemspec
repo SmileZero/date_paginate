@@ -15,15 +15,13 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency 'activesupport', ['>= 3.0.0']
   s.add_dependency 'actionpack', ['>= 3.0.0']
 
-  s.add_development_dependency 'bundler', ['>= 1.0.0']
-  s.add_development_dependency 'rake', ['>= 0']
-  s.add_development_dependency 'tzinfo', ['>= 0']
-  s.add_development_dependency 'rspec', ['>= 0']
-  s.add_development_dependency 'capybara', ['>= 1.0']
-  s.add_development_dependency 'database_cleaner', ['~> 1.2.0']
+  s.add_development_dependency 'rails', ['>= 3.0.0']
+  s.add_development_dependency 'rspec-rails', ['>= 3.0.0']
+  s.add_development_dependency 'rspec-parameterized', ['>= 0']
+  s.add_development_dependency 'factory_girl_rails', ['>= 0']
 end

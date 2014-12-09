@@ -19,7 +19,7 @@ module DatePaginate
       end
 
       def date_paginate_type_list
-        [:months, :weeks]
+        [:days, :weeks, :months]
       end
 
       def partial_path
