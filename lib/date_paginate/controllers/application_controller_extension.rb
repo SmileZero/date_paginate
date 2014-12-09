@@ -1,5 +1,5 @@
 module DatePaginate
-  module ApplicationHelper
+  module ApplicationControllerExtension
     def set_date(with_day: true)
       params[:day] = 1 unless with_day
 
@@ -14,6 +14,8 @@ module DatePaginate
       date  = date.beginning_of_month unless with_day
       @date = date
     end
+
+    alias_method :set_week, :set_date
 
     def set_month
       set_date(with_day: false)

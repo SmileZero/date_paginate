@@ -23,6 +23,7 @@ require 'date_paginate/config'
 require 'date_paginate/helpers/action_view_extension'
 require 'date_paginate/helpers/paginator'
 require 'date_paginate/models/within_period_module'
+require 'date_paginate/controllers/application_controller_extension'
 require 'date_paginate/hooks'
 
 # if not using Railtie, call `DatePaginate::Hooks.init` directly
