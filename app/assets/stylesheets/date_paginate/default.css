@@ -1,0 +1,13 @@
+.date_paginate > span.page{
+  float: left;
+  padding: 0 14px;
+  line-height: 38px;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid #DDD;
+  border-left-width: 0;
+}
+
+.date_paginate > span.page:first-child{
+  border-left: 1px solid #ddd;
+}
