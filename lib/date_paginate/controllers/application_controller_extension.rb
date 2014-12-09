@@ -15,6 +15,8 @@ module DatePaginate
       @date = date
     end
 
+    alias_method :set_week, :set_date
+
     def set_month
       set_date(with_day: false)
     end
