@@ -14,14 +14,15 @@ module DatePaginate
       def initialize(template, options)
         options[:num_pages] ||= DatePaginate.config.default_num_pages
 
-        unless options[:date_paginate_type].in? self.paginate_type_list
+        unless options[:date_paginate_type].in? self.class.paginate_type_list
           options[:date_paginate_type] = DatePaginate.config.default_paginate_type
         end
 
         @template, @options = template, options
 
         @date_paginate_type = @options.delete(:date_paginate_type)
-        @options["recent_#{@date_paginate_type}".to_sym] = send("recent_#{@date_paginate_type}", @options.delete(:num_pages))
+        @num_pages = @options.delete(:num_pages)
+        @options["recent_#{@date_paginate_type}".to_sym] = send("recent_#{@date_paginate_type}")
       end
 
       paginate_type_list.each do |date_paginate_type|
