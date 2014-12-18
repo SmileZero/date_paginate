@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'actionpack', ['>= 3.0.0']
 
   s.add_development_dependency 'rails', ['>= 3.0.0']
+  s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'rspec-rails', ['>= 3.0.0']
   s.add_development_dependency 'rspec-parameterized', ['>= 0']
   s.add_development_dependency 'factory_girl_rails', ['>= 0']
