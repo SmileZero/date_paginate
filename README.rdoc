@@ -13,7 +13,8 @@ Then bundle:
 
 === Query Basics
 
-within_day, within_week, within_month scope for ActiveRecord
+* within_day, within_week, within_month scope for ActiveRecord
+
   It will accpet a Date Type parameter, and a Symbol Type parameter.
 
   To fetch diaries which are created today
@@ -33,30 +34,30 @@ within_day, within_week, within_month scope for ActiveRecord
 
 === Controller
 
-set_date, set_week, set_month helper method
+* set_date, set_week, set_month helper method
 
-the three helper method in controller can easily help you to set @date.
+  the three helper method in controller can easily help you to set @date.
 
-The example of controller:
-  class DiariesController < ApplicationController
-    before_action :set_date,  only: [:day]
-    before_action :set_week,  only: [:week]
-    before_action :set_month, only: [:month]
+  The example of controller:
+    class DiariesController < ApplicationController
+      before_action :set_date,  only: [:day]
+      before_action :set_week,  only: [:week]
+      before_action :set_month, only: [:month]
 
-    def day
-      @diareis = Diary.within_day(@date)
+      def day
+        @diareis = Diary.within_day(@date)
+      end
+
+      def week
+        @diareis = Diary.within_week(@date)
+      end
+
+      def month
+        @diareis = Diary.within_month(@date)
+      end
     end
 
-    def week
-      @diareis = Diary.within_week(@date)
-    end
-
-    def month
-      @diareis = Diary.within_month(@date)
-    end
-  end
-
-Actually it just transfer params[:year], parmas[:month], params[:day] to Date type parameter @date.
+  Actually it just transfer params[:year], parmas[:month], params[:day] to Date type parameter @date.
 
 === View
 
