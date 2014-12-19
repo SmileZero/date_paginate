@@ -1,3 +1,85 @@
 = DatePaginate
 
-This project rocks and uses MIT-LICENSE.
+A Rails plugs-in which can paginate data by time period. It will help you to improve your application performance especially when your data is orgnized by time partition.
+
+== Install
+Put the line below in your Gemfile:
+  gem 'date_paginate'
+
+Then bundle:
+  % bundle install
+
+== Usage
+
+=== Query Basics
+
+* within_day, within_week, within_month scope for ActiveRecord
+
+  It will accpet a Date Type parameter, and a Symbol Type parameter.
+
+  To fetch diaries which are created today
+    Diary.within_day(Date.current) # :created_at by default
+
+  To fetch last week's diaries which are updated last week
+    Diary.within_day(Date.current.week_ago(1), :updated_at)
+
+  To fetch diaries published in 2014/11
+    Diary.within_month(Date.parse("2014/11/1"), :published_at)
+
+  Date Type parameter means the time you want to query
+  Symbol Type parameter means which column will be queried by time range.
+
+
+  within_week and within_month will accpet any day in the time range which you are searching for.
+
+=== Controller
+
+* set_date, set_week, set_month helper methods
+
+  These three helper methods in controller can easily help you to set @date.
+
+  The example of controller:
+    class DiariesController < ApplicationController
+      before_action :set_date,  only: [:day]
+      before_action :set_week,  only: [:week]
+      before_action :set_month, only: [:month]
+
+      def day
+        @diareis = Diary.within_day(@date)
+      end
+
+      def week
+        @diareis = Diary.within_week(@date)
+      end
+
+      def month
+        @diareis = Diary.within_month(@date)
+      end
+    end
+
+  Actually it just transfer params[:year], parmas[:month], params[:day] to Date type parameter @date.
+
+=== View
+
+Just add the line below to your view for create links of pagination:
+  <%= date_paginate %>
+
+It has num_pages and date_paginate_type options.
+* num_pages: the number of links
+* date_paginate_type: the link type(:days, :months, :months) to render
+
+    <%= date_paginate num_pages: 6, date_paginate_type: :months %>
+
+You can also use for short:
+  <%= date_paginate_days %>
+  <%= date_paginate_weeks %>
+  <%= date_paginate_months %>
+
+If you want to use the default CSS styles of DatePaginate:
+  <%= stylesheet_link_tag "date_paginate/default" %>
+
+=== General configuration options
+
+You can configure the following default values by overriding these values using <tt>DatePaginate.configure</tt> method.
+  num_pages           # 6 by default
+  date_paginate_type  # :months by default (:days, :weeks, :months)
