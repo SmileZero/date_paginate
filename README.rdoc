@@ -24,7 +24,7 @@ Then bundle:
     Diary.within_day(Date.current.week_ago(1), :updated_at)
 
   To fetch diaries published in 2014/11
-    Diary.within_month(Date.parse("2014/11/1", :published_at))
+    Diary.within_month(Date.parse("2014/11/1"), :published_at)
 
   Date Type parameter means the time you want to query
   Symbol Type parameter means which column will be queried by time range.
@@ -34,9 +34,9 @@ Then bundle:
 
 === Controller
 
-* set_date, set_week, set_month helper method
+* set_date, set_week, set_month helper methods
 
-  the three helper method in controller can easily help you to set @date.
+  These three helper methods in controller can easily help you to set @date.
 
   The example of controller:
     class DiariesController < ApplicationController
@@ -65,17 +65,17 @@ Just add the line below to your view for create links of pagination:
   <%= date_paginate %>
 
 It has num_pages and date_paginate_type options.
-  num_pages: the number of links
-  date_paginate_type: the link type(:days, :months, :months) to render
+* num_pages: the number of links
+* date_paginate_type: the link type(:days, :months, :months) to render
 
-  = date_paginate num_pages: 6, date_paginate_type: :months
+    <%= date_paginate num_pages: 6, date_paginate_type: :months %>
 
 You can also use for short:
   <%= date_paginate_days %>
   <%= date_paginate_weeks %>
   <%= date_paginate_months %>
 
-If you want to use the default css styles of DatePaginate:
+If you want to use the default CSS styles of DatePaginate:
   <%= stylesheet_link_tag "date_paginate/default" %>
 
 === General configuration options
