@@ -2,11 +2,11 @@ require 'active_support/configurable'
 
 module DatePaginate
   def self.configure(&block)
-    yield @config ||= DatePaginate::Configuration.new
+    yield @config ||= DatePaginate::Configuration.config
   end
 
   def self.config
-    @config
+    @config ||= DatePaginate::Configuration.config
   end
 
   class Configuration
