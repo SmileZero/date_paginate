@@ -7,6 +7,8 @@ module DatePaginate
     class Paginator
       include ::ActionView::Context
 
+      PARAM_KEY_BLACKLIST = :authenticity_token, :commit, :utf8, :_method
+
       def self.paginate_type_list
         [:days, :weeks, :months]
       end
@@ -23,6 +25,7 @@ module DatePaginate
         @date_paginate_type = @options.delete(:date_paginate_type)
         @num_pages = @options.delete(:num_pages)
         @options["recent_#{@date_paginate_type}".to_sym] = send("recent_#{@date_paginate_type}")
+        @params = template.params.except(*PARAM_KEY_BLACKLIST).merge(@options.delete(:params) || {})
       end
 
       paginate_type_list.each do |date_paginate_type|
@@ -53,6 +56,7 @@ module DatePaginate
       private :method_missing
 
       def to_s(locals = {})
+        locals = locals.merge(params: @params)
         @template.render :partial => partial_path, :locals => @options.merge(locals), :formats => [:html]
       end
     end

@@ -3,7 +3,7 @@
     <% recent_weeks.each do |begin_date| %>
       <% begin_date = begin_date.in_time_zone if date.is_a? ActiveSupport::TimeWithZone %>
       <span class="page<%=' current' if (date.between? begin_date, begin_date.end_of_week) %>">
-        <%= link_to_unless (date.between? begin_date, begin_date.end_of_week), "#{begin_date.strftime('%Y-%m-%d')} ~ #{begin_date.end_of_week.strftime('%Y-%m-%d')}", year: begin_date.year, month: begin_date.month, day: begin_date.day %>
+        <%= link_to_unless (date.between? begin_date, begin_date.end_of_week), "#{begin_date.strftime('%Y-%m-%d')} ~ #{begin_date.end_of_week.strftime('%Y-%m-%d')}", params.merge(year: begin_date.year, month: begin_date.month, day: begin_date.day) %>
       </span>
     <% end %>
   </nav>
