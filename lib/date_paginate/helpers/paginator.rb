@@ -56,8 +56,8 @@ module DatePaginate
       private :method_missing
 
       def to_s(locals = {})
-        locals = locals.merge(params: @params)
-        @template.render :partial => partial_path, :locals => @options.merge(locals), :formats => [:html]
+        locals = @options.merge(params: @params).merge(locals)
+        @template.render :partial => partial_path, :locals => locals, :formats => [:html]
       end
     end
   end
