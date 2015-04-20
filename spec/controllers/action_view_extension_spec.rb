@@ -8,6 +8,11 @@ describe DiariesController do
       get "index", year: Time.current.months_ago(1).year, month: Time.current.months_ago(1).month
       expect(response.body.scan(/<a href=\"\/diaries\?.+">/).size).to eq(5)
     end
+
+    it "with other params" do
+      get "index", status: 0, year: Time.current.months_ago(1).year, month: Time.current.months_ago(1).month
+      expect(response.body.scan(/<a href=\"\/diaries\?.+status=0.+">/).size).to eq(5)
+    end
   end
 
   describe "set_week" do
@@ -15,12 +20,22 @@ describe DiariesController do
       get "week_partition", year: Time.current.year, month: Time.current.month, day: Time.current.day
       expect(response.body.scan(/<a href=\"\/diaries\/week_partition\/archive\/\d+\/\d+\/\d+\">/).size).to eq(5)
     end
+
+    it "with other params" do
+      get "week_partition", status: 0, year: Time.current.year, month: Time.current.month, day: Time.current.day
+      expect(response.body.scan(/<a href=\"\/diaries\/week_partition\/archive\/\d+\/\d+\/\d+\?status=0\">/).size).to eq(5)
+    end
   end
 
   describe "set_date" do
     it do
       get "day_partition", year: Time.current.year, month: Time.current.month, day: Time.current.day
       expect(response.body.scan(/<a href=\"\/diaries\/day_partition\/archive\/\d+\/\d+\/\d+\">/).size).to eq(2)
+    end
+
+    it "with other params" do
+      get "week_partition", status: 0, year: Time.current.year, month: Time.current.month, day: Time.current.day
+      expect(response.body.scan(/<a href=\"\/diaries\/week_partition\/archive\/\d+\/\d+\/\d+\?status=0\">/).size).to eq(5)
     end
   end
 end

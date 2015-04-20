@@ -3,7 +3,7 @@
     <% recent_months.each do |begin_date| %>
       <% begin_date = begin_date.in_time_zone if date.is_a? ActiveSupport::TimeWithZone %>
       <span class="page<%=' current' if (date.between? begin_date, begin_date.end_of_month) %>">
-        <%= link_to_unless (date.between? begin_date, begin_date.end_of_month), begin_date.strftime('%Y-%m'), year: begin_date.year, month: begin_date.month %>
+        <%= link_to_unless (date.between? begin_date, begin_date.end_of_month), begin_date.strftime('%Y-%m'), params.merge(year: begin_date.year, month: begin_date.month) %>
       </span>
     <% end %>
   </nav>
