@@ -2,7 +2,14 @@ module DatePaginate
   # = Helpers
   module ActionViewExtension
     def date_paginate(options = {})
-      paginator = DatePaginate::Helpers::Paginator.new self, options.reverse_merge(date: @date, date_paginate_type: :months, num_pages: 6, :remote => false)
+      default_options = {
+        date:               @date,
+        date_paginate_type: DatePaginate.config.default_paginate_type,
+        num_pages:          DatePaginate.config.default_num_pages,
+        remote:             false
+      }
+
+      paginator = DatePaginate::Helpers::Paginator.new self, options.reverse_merge(default_options)
       paginator.to_s
     end
 
