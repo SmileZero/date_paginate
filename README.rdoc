@@ -80,6 +80,8 @@ If you want to use the default CSS styles of DatePaginate:
 
 === General configuration options
 
-You can configure the following default values by overriding these values using <tt>DatePaginate.configure</tt> method.
-  num_pages           # 6 by default
-  date_paginate_type  # :months by default (:days, :weeks, :months)
+You can configure the following default values by overriding these values using <tt>DatePaginate.configure</tt> method. You can put it in config/initializers/date_paginate.rb:
+  DatePaginate.configure do |config|
+    config.default_num_pages     = 6            # 6 by default
+    config.default_paginate_type = :months      # :months by default (:days, :weeks, :months)
+  end
