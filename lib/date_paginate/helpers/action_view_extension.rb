@@ -3,10 +3,10 @@ module DatePaginate
   module ActionViewExtension
     def date_paginate(options = {})
       default_options = {
-        date: @date,
+        date:               @date,
         date_paginate_type: DatePaginate.config.default_paginate_type,
-        num_pages: DatePaginate.config.default_num_pages,
-        remote: false
+        num_pages:          DatePaginate.config.default_num_pages,
+        remote:             false
       }
 
       paginator = DatePaginate::Helpers::Paginator.new self, options.reverse_merge(default_options)
